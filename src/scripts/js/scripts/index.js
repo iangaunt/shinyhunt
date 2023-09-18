@@ -32,6 +32,7 @@ function getBnP(n, p) {
 function element(id) {
     return document.getElementById(id);
 }
+// Generates the percentages for the encounter B(n, p).
 function generatePercentages() {
     element("current-odd").innerHTML = (Math.round(100 * getBnP(encounters, parseInt(odds.value))) / 100).toString() + "%";
     for (var i = 10; i < 100; i += 10) {
@@ -44,6 +45,7 @@ function generatePercentages() {
         element(s).innerHTML = count.toString();
     }
 }
+// Sets the encounters for the current hunt. Can be run in the terminal.
 function setEncounters(p) {
     encounters = p;
     counter.innerHTML = encounters.toString();

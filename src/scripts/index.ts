@@ -40,6 +40,7 @@ function element(id: string): HTMLElement {
     return document.getElementById(id); 
 }
 
+// Generates the percentages for the encounter B(n, p).
 function generatePercentages() {
     element("current-odd").innerHTML = (Math.round(100 * getBnP(encounters, parseInt(odds.value))) / 100).toString() + "%";
     for (let i = 10; i < 100; i += 10) {
@@ -54,6 +55,7 @@ function generatePercentages() {
     }
 }
 
+// Sets the encounters for the current hunt. Can be run in the terminal.
 function setEncounters(p: number) {
     encounters = p;
     counter.innerHTML = encounters.toString();
