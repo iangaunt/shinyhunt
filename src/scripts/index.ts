@@ -49,7 +49,7 @@ function generatePercentages() {
         while (getBnP(count, parseInt(odds.value)) <= i) {
             count++;
         }
-        element(s + "-until").innerHTML = count - encounters + " until";
+        element(s + "-until").innerHTML = (count - encounters).toString();
         element(s).innerHTML = count.toString();
     }
 }
