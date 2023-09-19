@@ -11,20 +11,20 @@ poke_name.addEventListener("input", function() {
 });
 
 // Updating counters.
-const counter = document.getElementById("counter");
+const counter = <HTMLInputElement> document.getElementById("counter");
 const add = <HTMLButtonElement> document.getElementById("add");
 const subtract = <HTMLButtonElement> document.getElementById("subtract");
 
 add.addEventListener("click", function() {
     encounters++;
-    counter.innerHTML = encounters.toString();
+    counter.value = encounters.toString();
     generatePercentages();
 })
 
 document.addEventListener("keydown", function(e) {
     if (e.key == " " || e.code == "Space") {
         encounters++;
-        counter.innerHTML = encounters.toString();
+        counter.value = encounters.toString();
         generatePercentages();
     }
 })
@@ -32,10 +32,16 @@ document.addEventListener("keydown", function(e) {
 subtract.addEventListener("click", function() {
     if (encounters - 1 >= 0) {
         encounters--;
-        counter.innerHTML = encounters.toString();
+        counter.value = encounters.toString();
         generatePercentages();
     }
 })
+
+counter.addEventListener("input", function() {
+    if (!parseInt(counter.value) || parseInt(counter.value) < 0) return;
+    encounters = parseInt(counter.value);
+    generatePercentages();
+});
 
 // Updating odds.
 const odds = <HTMLInputElement> document.getElementById("odd");

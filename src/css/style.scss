@@ -18,6 +18,8 @@ $yellow: rgb(246 202 131);
     text-align: center;
 }
 
+body { overflow: hidden;}
+
 main {
     @include flex;
     
@@ -59,9 +61,10 @@ main {
 
         hr { width: 80%; }
 
-        p {
+        #counter {
+            background: transparent;
             color: white;
-            font-size: 400%;
+            font-size: 300%;
         }
 
         #buttons {
@@ -177,6 +180,23 @@ main {
         hr { 
             margin: 10px;
             width: 80%; 
+        }
+    }
+}
+
+footer {
+    bottom: 25px;
+    color: white;
+    position: absolute;
+    right: 25px;
+
+    a {
+        color: $green;
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+            color: white;
         }
     }
 }

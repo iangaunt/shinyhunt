@@ -13,22 +13,28 @@ var add = document.getElementById("add");
 var subtract = document.getElementById("subtract");
 add.addEventListener("click", function () {
     encounters++;
-    counter.innerHTML = encounters.toString();
+    counter.value = encounters.toString();
     generatePercentages();
 });
 document.addEventListener("keydown", function (e) {
     if (e.key == " " || e.code == "Space") {
         encounters++;
-        counter.innerHTML = encounters.toString();
+        counter.value = encounters.toString();
         generatePercentages();
     }
 });
 subtract.addEventListener("click", function () {
     if (encounters - 1 >= 0) {
         encounters--;
-        counter.innerHTML = encounters.toString();
+        counter.value = encounters.toString();
         generatePercentages();
     }
+});
+counter.addEventListener("input", function () {
+    if (!parseInt(counter.value) || parseInt(counter.value) < 0)
+        return;
+    encounters = parseInt(counter.value);
+    generatePercentages();
 });
 // Updating odds.
 var odds = document.getElementById("odd");

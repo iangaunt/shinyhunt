@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+body {
+  overflow: hidden;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -48,9 +52,10 @@ main #tracker input {
 main #tracker hr {
   width: 80%;
 }
-main #tracker p {
+main #tracker #counter {
+  background: transparent;
   color: white;
-  font-size: 400%;
+  font-size: 300%;
 }
 main #tracker #buttons {
   display: flex;
@@ -165,4 +170,19 @@ main #statistics h1 {
 main #statistics hr {
   margin: 10px;
   width: 80%;
+}
+
+footer {
+  bottom: 25px;
+  color: white;
+  position: absolute;
+  right: 25px;
+}
+footer a {
+  color: rgb(0, 155, 114);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: white;
 }/*# sourceMappingURL=style.css.map */
