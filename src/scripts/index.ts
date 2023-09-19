@@ -1,6 +1,6 @@
 let encounters: number = 0;
 let currentOdds: number = 0;
-let rolls: Array<number> = [];
+const rolls: Array<number> = [];
 
 // Displaying images for the chosen Pokemon.
 const poke_name = <HTMLInputElement> document.getElementById("poke-name");
@@ -15,28 +15,34 @@ const counter = <HTMLInputElement> document.getElementById("counter");
 const add = <HTMLButtonElement> document.getElementById("add");
 const subtract = <HTMLButtonElement> document.getElementById("subtract");
 
-add.addEventListener("click", function() {
+/** Adds an encounter to our counter and updates the percentages. */
+function addEncounter() {
     encounters++;
     counter.value = encounters.toString();
     generatePercentages();
-})
+}
 
-document.addEventListener("keydown", function(e) {
-    if (e.key == " " || e.code == "Space") {
-        encounters++;
-        counter.value = encounters.toString();
-        generatePercentages();
-    }
-})
-
-subtract.addEventListener("click", function() {
+/** Subtracts an encounter to our counter and updates the percentages. */
+function subtractEncounter() {
     if (encounters - 1 >= 0) {
         encounters--;
         counter.value = encounters.toString();
         generatePercentages();
     }
+}
+
+add.addEventListener("click", addEncounter);
+subtract.addEventListener("click", subtractEncounter);
+
+document.addEventListener("keydown", function(e) {
+    if (e.key == " " || e.code == "Space") {
+        addEncounter();
+    } else if (e.key == "Backspace" || e.code == "Backspace") {
+        subtractEncounter();
+    }
 })
 
+// Allows for the manual updating of the counter.
 counter.addEventListener("input", function() {
     if (!parseInt(counter.value) || parseInt(counter.value) < 0) return;
     encounters = parseInt(counter.value);
@@ -87,32 +93,34 @@ function generatePercentages() {
     }
     element("current-odd").innerHTML = (Math.round(100 * getBnP(encounters, parseInt(odds.value))) / 100).toString() + "%";
 
+    // Updates the percentage board with the new levels of B(n, p).
     if (currentOdds != parseInt(odds.value)) {
-        let count = 0;
-        let i = 10;
+        currentOdds = parseInt(odds.value);
 
-        while (true) {
-            if (i == 100) break;
-            if (getBnP(count, parseInt(odds.value)) > i) {
-                rolls[i / 10 - i] = count;
-                i += 10;
-            }
-            count++;
+        // ln (1 - i / 10) / ln (p - 1 / current), where p is the current odds, will give
+        // us the amount of rolls it will take to reach the ith percentile.
+        for (let i = 1; i < 10; i++) {
+            rolls[i] = Math.round(
+                Math.ceil(Math.log(1 - i / 10) / Math.log((currentOdds - 1) / currentOdds))
+            );
         }
     }
 
+    // Add all of the encounters (and encounters needed) to the percentage board.
     for (let i = 10; i < 100; i += 10) {
         const s: string = i.toString();
-        const diff = rolls[i / 10 - i];
+        const diff = rolls[i / 10];
 
-        element(s + "-until").innerHTML = (diff - encounters).toString();
-        element(s).innerHTML = "(" + diff.toString() + ")";
+        element(s + "-until").innerHTML = (diff - encounters > 0 ? diff - encounters : 0).toString();
+        element(s).innerHTML = "(" + diff + ")";
     }
 }
 
-// Sets the encounters for the current hunt. Can be run in the terminal.
-function setEncounters(p: number) {
-    encounters = p;
-    counter.innerHTML = encounters.toString();
-    generatePercentages();
-}
+// Initialize the counter with 0 resets.
+let interval = null;
+interval = setInterval(function() {
+    if (document.readyState == "complete") {
+        counter.value = "0";
+        clearInterval(interval);
+    }
+}, 100)

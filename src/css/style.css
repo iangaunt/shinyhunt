@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap";
 * {
   font-family: Raleway, sans-serif;
+  font-size: 18px;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -14,7 +15,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(42, 45, 52);
+  background: linear-gradient(rgb(42, 45, 52) 0%, rgb(32, 35, 42) 100%);
   height: 100vh;
   width: 100vw;
 }
@@ -22,8 +23,8 @@ main #tracker {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   aspect-ratio: 0.5;
+  flex-direction: column;
   height: 75vh;
 }
 main #tracker #img-container {
@@ -76,7 +77,7 @@ main #tracker #buttons button {
   font-size: 300%;
   height: 40%;
   margin: 2%;
-  transition-duration: 0.15s;
+  transition-duration: 0.2s;
   width: 90%;
 }
 main #tracker #buttons button:hover {
@@ -109,6 +110,9 @@ main #statistics #odds {
   height: 10%;
   width: 80%;
 }
+main #statistics #odds p, main #statistics #odds span {
+  font-size: 100%;
+}
 main #statistics #odds span {
   color: rgb(246, 202, 131);
 }
@@ -132,6 +136,7 @@ main #statistics #percentages {
   border-radius: 10px;
   flex-direction: column;
   height: 60%;
+  overflow: hidden;
   width: 100%;
 }
 main #statistics #percentages h2 {

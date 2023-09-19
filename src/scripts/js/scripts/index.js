@@ -11,25 +11,31 @@ poke_name.addEventListener("input", function () {
 var counter = document.getElementById("counter");
 var add = document.getElementById("add");
 var subtract = document.getElementById("subtract");
-add.addEventListener("click", function () {
+/** Adds an encounter to our counter and updates the percentages. */
+function addEncounter() {
     encounters++;
     counter.value = encounters.toString();
     generatePercentages();
-});
-document.addEventListener("keydown", function (e) {
-    if (e.key == " " || e.code == "Space") {
-        encounters++;
-        counter.value = encounters.toString();
-        generatePercentages();
-    }
-});
-subtract.addEventListener("click", function () {
+}
+/** Subtracts an encounter to our counter and updates the percentages. */
+function subtractEncounter() {
     if (encounters - 1 >= 0) {
         encounters--;
         counter.value = encounters.toString();
         generatePercentages();
     }
+}
+add.addEventListener("click", addEncounter);
+subtract.addEventListener("click", subtractEncounter);
+document.addEventListener("keydown", function (e) {
+    if (e.key == " " || e.code == "Space") {
+        addEncounter();
+    }
+    else if (e.key == "Backspace" || e.code == "Backspace") {
+        subtractEncounter();
+    }
 });
+// Allows for the manual updating of the counter.
 counter.addEventListener("input", function () {
     if (!parseInt(counter.value) || parseInt(counter.value) < 0)
         return;
@@ -79,23 +85,17 @@ function generatePercentages() {
     }
     element("current-odd").innerHTML = (Math.round(100 * getBnP(encounters, parseInt(odds.value))) / 100).toString() + "%";
     if (currentOdds != parseInt(odds.value)) {
-        var count = 0;
-        var i = 10;
-        while (true) {
-            if (i == 100)
-                break;
-            if (getBnP(count, parseInt(odds.value)) > i) {
-                rolls[i / 10 - i] = count;
-                i += 10;
-            }
-            count++;
+        currentOdds = parseInt(odds.value);
+        for (var i = 1; i < 10; i++) {
+            console.log(Math.ceil(Math.log(1 - i / 10) / Math.log((currentOdds - 1) / currentOdds)));
+            rolls[i] = Math.round(Math.ceil(Math.log(1 - i / 10) / Math.log((currentOdds - 1) / currentOdds)));
         }
     }
     for (var i = 10; i < 100; i += 10) {
         var s = i.toString();
-        var diff = rolls[i / 10 - i];
-        element(s + "-until").innerHTML = (diff - encounters).toString();
-        element(s).innerHTML = "(" + diff.toString() + ")";
+        var diff = rolls[i / 10];
+        element(s + "-until").innerHTML = (diff - encounters > 0 ? diff - encounters : 0).toString();
+        element(s).innerHTML = "(" + diff + ")";
     }
 }
 // Sets the encounters for the current hunt. Can be run in the terminal.
@@ -104,3 +104,11 @@ function setEncounters(p) {
     counter.innerHTML = encounters.toString();
     generatePercentages();
 }
+// Initialize the counter with 0 resets.
+var interval = null;
+interval = setInterval(function () {
+    if (document.readyState == "complete") {
+        counter.value = "0";
+        clearInterval(interval);
+    }
+}, 100);
