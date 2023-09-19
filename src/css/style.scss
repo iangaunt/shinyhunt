@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import "https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap";
 
 @mixin flex {
     display: flex;
@@ -6,13 +6,13 @@
     align-items: center;
 }
 
-$dark: rgb(42, 45, 52);
-$green: rgb(0, 155, 114);
-$red: rgb(219, 84, 97);
-$yellow: rgb(246, 202, 131);
+$dark: rgb(42 45 52);
+$green: rgb(0 155 114);
+$red: rgb(219 84 97);
+$yellow: rgb(246 202 131);
 
 * {
-    font-family: 'Raleway', sans-serif;
+    font-family: Raleway, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -20,12 +20,14 @@ $yellow: rgb(246, 202, 131);
 
 main {
     @include flex;
+    
     background: $dark;
     height: 100vh;
     width: 100vw;
 
     #tracker {
         @include flex;
+
         flex-direction: column;
         aspect-ratio: 0.5;
         height: 75vh;
@@ -64,6 +66,7 @@ main {
 
         #buttons {
             @include flex;
+
             border: 0;
             flex-direction: column;
             height: 20%;
@@ -100,15 +103,16 @@ main {
 
     #statistics {
         @include flex;
-        flex-direction: column;
-        justify-content: flex-end;
 
         aspect-ratio: 0.5;
+        flex-direction: column;
         color: white;
         height: 75vh;
+        justify-content: flex-end;
 
         #odds {
             @include flex;
+
             color: white;
             font-size: 150%;
             height: 10%;
@@ -131,10 +135,10 @@ main {
 
         #percentages {
             @include flex;
-            flex-direction: column;
 
             border: 1px white solid;
             border-radius: 10px;
+            flex-direction: column;
             height: 60%;
             width: 100%;
 
@@ -153,7 +157,7 @@ main {
 
                 span {
                     font-size: 65%;
-                    color: rgb(255 255 255 / 0.5);
+                    color: rgb(255 255 255 / 50%);
                 }
 
                 #green, #yellow, #red {
