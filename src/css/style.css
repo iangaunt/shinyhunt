@@ -1,7 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap";
 * {
   font-family: Raleway, sans-serif;
-  font-size: 18px;
+  font-size: 105%;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -190,4 +190,27 @@ footer a {
 }
 footer a:hover {
   color: white;
+}
+
+@media screen and (max-width: 750px) {
+  * {
+    font-size: 100%;
+  }
+  main {
+    flex-direction: column;
+    height: 100vh;
+  }
+  main #tracker #buttons {
+    flex-direction: row;
+    height: 30%;
+  }
+  main #tracker #buttons button {
+    height: 100%;
+  }
+  main #tracker #buttons button:hover {
+    height: 110%;
+  }
+  footer {
+    opacity: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

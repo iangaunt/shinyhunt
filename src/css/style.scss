@@ -13,7 +13,7 @@ $yellow: rgb(246 202 131);
 
 * {
     font-family: Raleway, sans-serif;
-    font-size: 18px;
+    font-size: 105%;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -201,5 +201,33 @@ footer {
         &:hover {
             color: white;
         }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    * {
+        font-size: 100%;
+    }
+
+    main {
+        flex-direction: column;
+        height: 100vh;
+
+        #tracker #buttons {
+            flex-direction: row;
+            height: 30%;
+
+            button {
+                height: 100%;
+
+                &:hover {
+                    height: 110%;
+                }
+            }
+        }
+    }
+
+    footer {
+        opacity: 0;
     }
 }
