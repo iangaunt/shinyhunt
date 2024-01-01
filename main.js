@@ -33473,7 +33473,7 @@ function Percentages(props) {
     return (react_1.default.createElement("div", { id: "percentages" },
         react_1.default.createElement("h2", null,
             "Current Odds: ",
-            react_1.default.createElement("span", { id: "current-odd" })),
+            react_1.default.createElement("span", { id: "current-odd" }, (Math.round(100 * getBnP(props.encounters, props.odds)) / 100).toString() + "%")),
         odds));
 }
 function Statistics(props) {
