@@ -1,0 +1,235 @@
+/*!*********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css ***!
+  \*********************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap);
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css (1) ***!
+  \*************************************************************************/
+* {
+  font-family: Raleway, sans-serif;
+  font-size: 105%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+*::-moz-selection {
+  background: rgba(255, 255, 255, 0.05);
+}
+*::selection {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgb(42, 45, 52) 0%, rgb(32, 35, 42) 100%);
+  height: 100vh;
+  width: 100vw;
+}
+main .container #tracker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 0.5;
+  flex-direction: column;
+  height: 75vh;
+}
+main .container #tracker #img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  font-size: 200%;
+  height: 50%;
+  margin: 20px;
+  width: 100%;
+}
+main .container #tracker #img-container img {
+  display: inline-block;
+  height: 80%;
+}
+main .container #tracker input {
+  border: 0;
+  border-radius: 10px;
+  font-size: 200%;
+  height: 10%;
+  margin: 20px;
+  width: 90%;
+}
+main .container #tracker hr {
+  width: 80%;
+}
+main .container #tracker #counter {
+  background: transparent;
+  color: white;
+  font-size: 300%;
+}
+main .container #tracker #buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  flex-direction: column;
+  height: 20%;
+  width: 100%;
+}
+main .container #tracker #buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 300%;
+  height: 40%;
+  margin: 2%;
+  transition-duration: 0.2s;
+  width: 90%;
+}
+main .container #tracker #buttons button:hover {
+  height: 50%;
+}
+main .container #tracker #buttons #add {
+  background: rgb(0, 155, 114);
+  margin-bottom: 1%;
+}
+main .container #tracker #buttons #subtract {
+  background: rgb(219, 84, 97);
+  margin-top: 1%;
+}
+main .container #statistics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 0.5;
+  flex-direction: column;
+  color: white;
+  height: 75vh;
+  justify-content: flex-end;
+}
+main .container #statistics #odds {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 150%;
+  height: 10%;
+  width: 80%;
+}
+main .container #statistics #odds p, main .container #statistics #odds span {
+  font-size: 100%;
+}
+main .container #statistics #odds span {
+  color: rgb(246, 202, 131);
+}
+main .container #statistics #odds input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  font-size: 100%;
+  height: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 40%;
+}
+main .container #statistics #percentages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px white solid;
+  border-radius: 10px;
+  flex-direction: column;
+  height: 60%;
+  overflow: hidden;
+  width: 100%;
+}
+main .container #statistics #percentages h2 {
+  font-size: 120%;
+  margin: 10px;
+}
+main .container #statistics #percentages h2 #current-odd {
+  color: rgb(246, 202, 131);
+}
+main .container #statistics #percentages p {
+  font-size: 120%;
+  text-align: start;
+  white-space: nowrap;
+  width: 80%;
+}
+main .container #statistics #percentages p span {
+  font-size: 65%;
+  color: rgba(255, 255, 255, 0.5);
+}
+main .container #statistics #percentages p #green, main .container #statistics #percentages p #yellow, main .container #statistics #percentages p #red {
+  font-size: 100%;
+}
+main .container #statistics #percentages p #green {
+  color: rgb(0, 155, 114);
+}
+main .container #statistics #percentages p #yellow {
+  color: rgb(246, 202, 131);
+}
+main .container #statistics #percentages p #red {
+  color: rgb(219, 84, 97);
+}
+main .container #statistics h1 {
+  font-size: 160%;
+  width: 90%;
+}
+main .container #statistics hr {
+  margin: 10px;
+  width: 80%;
+}
+
+footer {
+  bottom: 25px;
+  color: white;
+  position: absolute;
+  right: 25px;
+}
+footer a {
+  color: rgb(0, 155, 114);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: white;
+}
+
+@media screen and (max-width: 750px) {
+  * {
+    font-size: 100%;
+  }
+  main .container {
+    flex-direction: column;
+    height: 150vh;
+  }
+  main .container #tracker {
+    height: 105vh;
+    width: 60vw;
+  }
+  main .container #tracker #buttons {
+    flex-direction: row;
+    height: 30%;
+  }
+  main .container #tracker #buttons button {
+    font-size: 150px;
+    height: 100%;
+  }
+  main .container #tracker #buttons button:hover {
+    height: 110%;
+  }
+  footer {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=main.css.map*/
