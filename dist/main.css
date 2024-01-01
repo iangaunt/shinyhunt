@@ -1,4 +1,10 @@
-@import "https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap";
+/*!*********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css ***!
+  \*********************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap);
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css (1) ***!
+  \*************************************************************************/
 * {
   font-family: Raleway, sans-serif;
   font-size: 105%;
@@ -225,3 +231,5 @@ footer a:hover {
     opacity: 0;
   }
 }/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=main.css.map*/
