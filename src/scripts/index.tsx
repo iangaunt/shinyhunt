@@ -10,4 +10,3 @@ const root = createRoot(document.getElementById("main"))
 root.render((
     <Counter />
 ));
-

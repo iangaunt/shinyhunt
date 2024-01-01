@@ -36,7 +36,7 @@ function Percentages(props: {
 
     return (
         <div id="percentages">
-            <h2>Current Odds: <span id="current-odd"></span></h2>
+            <h2>Current Odds: <span id="current-odd">{(Math.round(100 * getBnP(props.encounters, props.odds)) / 100).toString() + "%"}</span></h2>
             
             {odds}
         </div>
