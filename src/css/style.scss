@@ -17,11 +17,15 @@ $yellow: rgb(246 202 131);
     margin: 0;
     padding: 0;
     text-align: center;
+
+    &::selection {
+        background: rgb(255 255 255 / 0.05)
+    }
 }
 
-body { overflow: hidden; }
+body { overflow-x: hidden; }
 
-main {
+main .container {
     @include flex;
     
     background: linear-gradient($dark 0%, rgb(32 35 42) 100%);
@@ -209,19 +213,25 @@ footer {
         font-size: 100%;
     }
 
-    main {
+    main .container {
         flex-direction: column;
-        height: 100vh;
+        height: 150vh;
 
-        #tracker #buttons {
-            flex-direction: row;
-            height: 30%;
+        #tracker {
+            height: 105vh;
+            width: 60vw;
 
-            button {
-                height: 100%;
-
-                &:hover {
-                    height: 110%;
+            #buttons {
+                flex-direction: row;
+                height: 30%;
+    
+                button {
+                    font-size: 150px;
+                    height: 100%;
+    
+                    &:hover {
+                        height: 110%;
+                    }
                 }
             }
         }
